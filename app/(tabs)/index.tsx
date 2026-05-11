@@ -199,7 +199,6 @@ export default function App() {
               Awesome! You matched all the pairs!
             </Text>
 
-            {/* Stats Summary */}
             <View style={styles.winStatsContainer}>
               <View style={styles.winStatRow}>
                 <Text style={styles.winStatLabel}>⏱️  Time</Text>
