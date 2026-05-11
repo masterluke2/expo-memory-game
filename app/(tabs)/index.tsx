@@ -45,7 +45,6 @@ export default function App() {
   const [gameStarted, setGameStarted] = useState<boolean>(false);
   const [showWinModal, setShowWinModal] = useState<boolean>(false);
 
-  // Timer effect
   useEffect(() => {
     let interval: ReturnType<typeof setInterval>;
     if (gameStarted && matched.length < cards.length) {
@@ -56,7 +55,6 @@ export default function App() {
     return () => clearInterval(interval);
   }, [gameStarted, matched.length, cards.length]);
 
-  // Show win modal when game completes
   useEffect(() => {
     if (matched.length === cards.length && cards.length > 0) {
       setTimeout(() => setShowWinModal(true), 500);
@@ -128,13 +126,11 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <StatusBar barStyle="light-content" backgroundColor="#1a1a2e" />
 
-      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.title}>🎴 Animal Memory</Text>
         <Text style={styles.subtitle}>Find all the matching pairs!</Text>
       </View>
 
-      {/* Stats Row */}
       <View style={styles.statsContainer}>
         <View style={styles.statBox}>
           <Text style={styles.statIcon}>⏱️</Text>
@@ -153,7 +149,6 @@ export default function App() {
         </View>
       </View>
 
-      {/* Progress Bar */}
       <View style={styles.progressContainer}>
         <View style={styles.progressBg}>
           <View style={[styles.progressFill, { width: `${progress}%` }]} />
@@ -163,7 +158,6 @@ export default function App() {
         </Text>
       </View>
 
-      {/* Grid */}
       <View style={styles.grid}>
         {cards.map((card, index) => {
           const isFlipped = flipped.includes(index) || matched.includes(index);
@@ -191,7 +185,6 @@ export default function App() {
         })}
       </View>
 
-      {/* WIN MODAL - Only shows after completion */}
       <Modal
         visible={showWinModal}
         transparent
@@ -224,7 +217,6 @@ export default function App() {
               </View>
             </View>
 
-            {/* Reset Button */}
             <TouchableOpacity
               style={styles.resetBtn}
               onPress={resetGame}
